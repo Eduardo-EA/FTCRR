@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.AutoForCOmp.WorkInporgress;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -7,7 +8,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.TheUnkown.PIDController;
 
-
+@Disabled
 @TeleOp(name="PIDHELPME", group="TeleOp")
 public class LiftMotorPreSetsWithPID extends OpMode {
     private double kp; // proportional gain

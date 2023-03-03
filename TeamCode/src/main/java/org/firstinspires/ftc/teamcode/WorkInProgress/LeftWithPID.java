@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 @Config
 @Autonomous
-public class RightWithPID extends LinearOpMode
+public class LeftWithPID extends LinearOpMode
 {
   //  private final ElapsedTime runtime = new ElapsedTime();
 
@@ -141,7 +141,7 @@ public class RightWithPID extends LinearOpMode
 
 
 //28.5 -6.5
-                .lineToLinearHeading(new Pose2d(28, -6, Math.toRadians(138)),
+                .lineToLinearHeading(new Pose2d(28, -6, Math.toRadians(45)),
                         SampleMecanumDrive.getVelocityConstraint(30, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))// turns torwards junction and move forward
                 .addTemporalMarker(3.8,() -> {
@@ -160,70 +160,9 @@ public class RightWithPID extends LinearOpMode
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))//\.a
 
 
-                //new stuff here yay
-                //turns to the cone stack
-                .lineToLinearHeading(new Pose2d(34.64,-10.5,Math.toRadians(8)),
-                        SampleMecanumDrive.getVelocityConstraint(35, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
-
-                // goes to the cone stack
-                .lineToLinearHeading(new Pose2d(58,-10.5,Math.toRadians(8)))
-                .addTemporalMarker(7.3, () ->{
-                    RightServo.setPosition(.35);
-                    LeftServo.setPosition(.65);
-                })
-
-                .addTemporalMarker(8, () ->{
-                    LiftMotor.setTargetPosition((int) (COUNTS_PER_ROTATION * 3.8));
-                    LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    LiftMotor.setPower(power);
-                })
-                .waitSeconds(2)
 
 
-
-                //32.64,-10.50 lined up to the high junction //.lineToLinearHeading(new Pose2d(31,-9, Math.toRadians(125)))
-
-                //.lineToLinearHeading(new Pose2d(29.64,-11.5, Math.toRadians(0)))
-
-                //this slows down need to test
-                .lineToLinearHeading(
-                        new Pose2d(34.29,-12.84,Math.toRadians(0)),
-                        SampleMecanumDrive.getVelocityConstraint(40, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL)
-                )
-
-                .lineToLinearHeading(
-                        new Pose2d(23,-10.84,Math.toRadians(90)),
-                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL)
-                )
-                .lineToLinearHeading(
-                        new Pose2d(23,-5.84,Math.toRadians(90)),
-                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
-                        SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL)
-                )
-                .addDisplacementMarker(()-> {
-                    LiftMotor.setTargetPosition((int) (COUNTS_PER_ROTATION * .76));
-                    LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    LiftMotor.setPower(power);
-
-
-                })
-                .waitSeconds(1)
-                .addDisplacementMarker(()-> {
-
-                    RightServo.setPosition(.55);
-                    LeftServo.setPosition(.48);
-                })
-
-
-                .waitSeconds(.2)
-
-
-
-
-
+/*
                 //Parking
                 .lineToLinearHeading(
                         new Pose2d(23,-9.50,Math.toRadians(90)),
@@ -246,6 +185,8 @@ public class RightWithPID extends LinearOpMode
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL)
                 )
 
+
+ */
 
 
 

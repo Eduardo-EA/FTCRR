@@ -6,6 +6,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -22,6 +23,7 @@ import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
 import java.io.File;
 
+@Disabled
 @TeleOp(name="oneplayer", group="Linear Opmode")
 public class Oneplayer extends LinearOpMode {
     final ElapsedTime runtime = new ElapsedTime();  //delete final if prob

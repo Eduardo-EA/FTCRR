@@ -5,6 +5,7 @@ import static java.lang.Math.cos;
 import static java.lang.Math.pow;
 import static java.lang.Math.sin;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -17,9 +18,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-
-@TeleOp(name="oneplayerWithPID", group="Linear Opmode")
-public class OneplayerWithPID extends LinearOpMode {
+@Config
+@TeleOp
+public class CameronLOLXOXOXOwouldHit extends LinearOpMode {
     final ElapsedTime runtime = new ElapsedTime();  //delete final if prob
     DcMotor RightFrontDrive;
     DcMotor LeftFrontDrive;
@@ -52,6 +53,8 @@ public class OneplayerWithPID extends LinearOpMode {
     double high = (3.5 * COUNTS_PER_ROTATION);
 
     private static final double COUNTS_PER_ROTATION = 394.5;
+
+
 
 
 
@@ -102,7 +105,10 @@ public class OneplayerWithPID extends LinearOpMode {
         LiftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         LiftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        LiftMotor.setTargetPosition(0);
         LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        double tarf = LiftMotor.getCurrentPosition();
 
 
 
@@ -171,70 +177,42 @@ public class OneplayerWithPID extends LinearOpMode {
 
 
                 //This one uses a boolean for a varible if true runs with encoders but if false runs without
-            double currentpos = LiftMotor.getCurrentPosition();
-            boolean ispresent = false;
+             double Lift = LiftMotor.getPower();
 
-            if (gamepad1.a){
-                ispresent = true;
-            }else if (gamepad1.b){
-                ispresent = true;
-            }else if (gamepad1.y){
-                ispresent = true;
-            }else if (gamepad1.dpad_up){
-                ispresent = false;
-            } else if (gamepad1.dpad_down){
-                ispresent = false;
-            }
-
-
-            if (gamepad1.a) {
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) (COUNTS_PER_ROTATION * 3.8));
-                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                LiftMotor.setPower(power);
-            } else if (gamepad1.b) {
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) (COUNTS_PER_ROTATION * 2));
-                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                LiftMotor.setPower(power);
-            } else if (gamepad1.y) {
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) (COUNTS_PER_ROTATION * 1));
-                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                LiftMotor.setPower(power);
-            }
-
+/*
             if (gamepad1.dpad_up){
                 LiftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                LiftMotor.setPower(.5);
-            } else if  (gamepad1.dpad_down) {
+                LiftMotor.setPower(-.7);
+            } else if (gamepad1.dpad_down){
                 LiftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                LiftMotor.setPower(-.5);
-            } else if (!ispresent) {
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) currentpos);
-                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                LiftMotor.setPower(1);
-            }
-
-/*                  Another Test But this one subtracts or add 2 front the current position
-            double lifttestright = LiftMotor.getCurrentPosition() +2;
-            double lifttestleft = LiftMotor.getCurrentPosition() -2;
-
-            if (gamepad1.right_trigger > 0) {
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) lifttestright);
-                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                LiftMotor.setPower(power);
-            } else if (gamepad1.left_trigger > 0){
-                LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                LiftMotor.setTargetPosition((int) lifttestleft);
+                LiftMotor.setPower(.7);
+            } else if (!LiftMotor.isBusy()){
+                LiftMotor.getCurrentPosition();
+                LiftMotor.setTargetPosition((int) tarf);
                 LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 LiftMotor.setPower(power);
             }
 
  */
-                //add telemetry for the liftmotor
+
+            if (gamepad1.dpad_up){
+                tarf = LiftMotor.getCurrentPosition() - 250;
+               LiftMotor.setTargetPosition((int) tarf);
+               LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+               LiftMotor.setPower(.5);
+            } else if (gamepad1.dpad_down){
+                tarf = LiftMotor.getCurrentPosition() + 250;
+                LiftMotor.setTargetPosition((int) (tarf ));
+                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                LiftMotor.setPower(.5);
+            } else {
+                LiftMotor.setTargetPosition((int) (tarf ));
+                LiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                LiftMotor.setPower(.01);
+            }
+
+
+
 
             telemetry.addData("Ticks","This is FUN: " + LiftMotor.getCurrentPosition());
 
