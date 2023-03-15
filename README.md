@@ -8,6 +8,7 @@ Utilizes RoadRunner trajectories and April tags for the robot’s autonomous pha
 
 
 ***Requires Android Studios***
+Download Android Studios [Click Here](https://developer.android.com/studio)
 
 
 ## Getting Started
@@ -31,7 +32,7 @@ Download Tags here ----[Tags](https://drive.google.com/file/d/1cakdgu8sm0rb3wR9s
 1) Download [libOpenCvAndroid453.so](https://drive.google.com/file/d/1XX_7nesg6d4QWU9ee3rvkTZweq03E1ey/view?usp=sharing)
 2) Connect to the Rev Control Hub via USB
 3) Open "Device File Explore" in Android Studios
-4) 
+4) Locate ![sdcard](FtcRobotController/src/main/assets/img.png)
 
 
 ## Authors
