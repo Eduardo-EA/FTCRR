@@ -42,6 +42,7 @@ Download Tags here ----[Tags](https://drive.google.com/file/d/1cakdgu8sm0rb3wR9s
 6) Once you've located the file name "First" drag the libOpenCvAndroid453.so file on top of the "First" file (will be highlighted) to upload.
 7) To confirm if done correctly the file will be locate under "First"
 ![confirm](FtcRobotController/src/main/assets/img_2.png)
+8) Once done April Tags are setup
 
 
 ## Authors
