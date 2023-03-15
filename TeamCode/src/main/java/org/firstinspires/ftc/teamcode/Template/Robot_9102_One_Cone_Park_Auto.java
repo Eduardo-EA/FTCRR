@@ -1,17 +1,17 @@
-package org.firstinspires.ftc.teamcode.AutoForCOmp;
+package org.firstinspires.ftc.teamcode.Template;
 
 import android.annotation.SuppressLint;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.AutoForCOmp.AprilTagDetectionPipeline;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.openftc.apriltag.AprilTagDetection;
@@ -21,15 +21,15 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 
 import java.util.ArrayList;
 
-@Disabled
+
 @Config
 @Autonomous
-public class RIghtPArkjustbs extends LinearOpMode
+public class Robot_9102_One_Cone_Park_Auto extends LinearOpMode
 {
   //  private final ElapsedTime runtime = new ElapsedTime();
 
     OpenCvCamera camera;
-    AprilTagDetectionPipeline aprilTagDetectionPipeline;
+    org.firstinspires.ftc.teamcode.AutoForCOmp.AprilTagDetectionPipeline aprilTagDetectionPipeline;
 
     double fx = 578.272;
     double fy = 578.272;
@@ -64,10 +64,6 @@ public class RIghtPArkjustbs extends LinearOpMode
         RightServo = hardwareMap.get(Servo.class,"RightServo");
         LeftServo = hardwareMap.get(Servo.class,"LeftServo");
 
-        //Close servos
-       // RightServo.setPosition(.35);
-       // LeftServo.setPosition(.65);
-
 
         LiftMotor = hardwareMap.get(DcMotor.class, "LiftMotor");
 
@@ -77,13 +73,6 @@ public class RIghtPArkjustbs extends LinearOpMode
 
          LiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        //Lift Motor THe speed is 1
-        //LiftMotor.setPower(LiftSpeed);
-       // sleep(700);    //Change sleep timer for the duration of the motor lift
-       // LiftMotor.setPower(0);
-
-
-        //If you want to add more movement copy and paste the code above line 120 to 122
 
         drive.setPoseEstimate(new Pose2d(35.87,-60.07, Math.toRadians(90)));
 
@@ -112,37 +101,7 @@ public class RIghtPArkjustbs extends LinearOpMode
 
             }
         });
-/*
-        TrajectorySequence Rightscorev3 = drive.trajectorySequenceBuilder(new Pose2d(35.33, -63.28, Math.toRadians(90.00)))
-                .lineToLinearHeading(new Pose2d(35.63, -13.01, Math.toRadians(90)))// goes forward to middle]
 
-                .lineToLinearHeading(new Pose2d(25, -12.04, Math.toRadians(90))) //Lines up for highjunction
-                .addTemporalMarker(.5, () -> {
-                    // This marker runs two seconds into the trajectory
-                    LiftMotor.setPower(.1);
-
-                    // Run your action in here!
-                })
-                .lineToLinearHeading(new Pose2d(20, -7.25, Math.toRadians(90)))// goes forward with cone above the junction and score
-                .addTemporalMarker(3, () -> {
-                    // This marker runs two seconds into the trajectory
-                    LiftMotor.setPower(-.5);
-
-
-                    // Run your action in here!
-                })
-                .addTemporalMarker(8, () -> {
-                    // This marker runs two seconds into the trajectory
-                    RightServo.setPosition(.55);
-                    LeftServo.setPosition(.48);
-
-                    // Run your action in here!
-                })
-
-               // .lineToLinearHeading(new Pose2d(24.79, -12.04, Math.toRadians(90))) // goes backwards after scoring
-               // .lineToLinearHeading(new Pose2d(11.51, -12.75, Math.toRadians(90))) //park in zone 1
-
- */
 
         TrajectorySequence park1 = drive.trajectorySequenceBuilder(new Pose2d(39.04, -63.21, Math.toRadians(90.00)))
                 .addDisplacementMarker(() ->{
@@ -158,7 +117,7 @@ public class RIghtPArkjustbs extends LinearOpMode
                     LiftMotor.setPower(.2); // was -2
 
 
-                    // Run your action in here!
+
                 })
 
                 .lineToLinearHeading(new Pose2d(31.5, -6.5, Math.toRadians(138.24))) // turns torwards junction and move forward
@@ -168,9 +127,9 @@ public class RIghtPArkjustbs extends LinearOpMode
                     LiftMotor.setPower(0);
 
 
-                    // Run your action in here!
+
                 })
-                //.waitSeconds(2)  cam commit
+
                 .addTemporalMarker(2.5, () -> {
 
                     LiftMotor.setPower(-.8);
@@ -186,12 +145,9 @@ public class RIghtPArkjustbs extends LinearOpMode
                     LiftMotor.setPower(0);
 
                 })
-                // .waitSeconds(2)
+
                 .lineToLinearHeading(new Pose2d(34.64, -11.50, Math.toRadians(90))) //\.a
                 .lineToLinearHeading(new Pose2d(14,-12.50, Math.toRadians(90)))
-                // .addSpatialMarker((34.64,-50))
-                // .lineToLinearHeading(new Pose2d(12.67, -12.82, Math.toRadians(90.00)))
-
 
 
                 .build();
@@ -249,12 +205,8 @@ public class RIghtPArkjustbs extends LinearOpMode
                     LiftMotor.setPower(0);
 
                 })
-                // .waitSeconds(2)
-                .lineToLinearHeading(new Pose2d(34.64, -12.50, Math.toRadians(90)))//\.a
-           //     .lineToLinearHeading(new Pose2d(14,-11.50, Math.toRadians(90)))
-                // .addSpatialMarker((34.64,-50))
-                // .lineToLinearHeading(new Pose2d(12.67, -12.82, Math.toRadians(90.00)))
 
+                .lineToLinearHeading(new Pose2d(34.64, -12.50, Math.toRadians(90)))//\.a
 
 
                 .build();
@@ -413,38 +365,22 @@ public class RIghtPArkjustbs extends LinearOpMode
 
 
         if(tagOfInterest == null){
-           // RightServo.setPosition(.35);
-           // LeftServo.setPosition(.65);
-          //  LiftMotor.setPower(LiftSpeed);
-          //  sleep(700);    //Change sleep timer for the duration of the motor lift
-          //  LiftMotor.setPower(0);
+
             drive.followTrajectorySequence(park3);
 
         }else{
             switch(tagOfInterest.id){
 
                 case 1:
-                //    RightServo.setPosition(.35);
-                 //   LeftServo.setPosition(.65);
-                  //  LiftMotor.setPower(LiftSpeed);
-                  //  sleep(700);    //Change sleep timer for the duration of the motor lift
-                  //  LiftMotor.setPower(0);
+
                     drive.followTrajectorySequence(park1);
                     break;
                 case 2:
-                  //  RightServo.setPosition(.35);
-                  //  LeftServo.setPosition(.65);
-                  //  LiftMotor.setPower(LiftSpeed);
-                  //  sleep(700);    //Change sleep timer for the duration of the motor lift
-                  //  LiftMotor.setPower(0);
+
                     drive.followTrajectorySequence(park2);
                     break;
                 case 3:
-                  //  LiftMotor.setPower(LiftSpeed);
-                  //  sleep(700);    //Change sleep timer for the duration of the motor lift
-                   // LiftMotor.setPower(0);
-                  //  RightServo.setPosition(.35);
-                  //  LeftServo.setPosition(.65);
+
                     drive.followTrajectorySequence(park3);
                     break;
             }
@@ -457,13 +393,6 @@ public class RIghtPArkjustbs extends LinearOpMode
     void tagToTelemetry(AprilTagDetection detection)
     {
         telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
-       /* telemetry.addLine(String.format("Translation X: %.2f feet", detection.pose.x*FEET_PER_METER));
-        telemetry.addLine(String.format("Translation Y: %.2f feet", detection.pose.y*FEET_PER_METER));
-        telemetry.addLine(String.format("Translation Z: %.2f feet", detection.pose.z*FEET_PER_METER));
-        telemetry.addLine(String.format("Rotation Yaw: %.2f degrees", Math.toDegrees(detection.pose.yaw)));
-        telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
-        telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
 
-        */
     }
 }

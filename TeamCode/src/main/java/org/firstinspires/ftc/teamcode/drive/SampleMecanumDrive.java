@@ -42,8 +42,6 @@ import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigu
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
-import org.firstinspires.ftc.teamcode.util.AxisDirection;
-import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
 import org.firstinspires.ftc.teamcode.util.LynxModuleUtil;
 
 import java.util.ArrayList;
@@ -115,10 +113,8 @@ public class SampleMecanumDrive extends MecanumDrive {
         // and the placement of the dot/orientation from https://docs.revrobotics.com/rev-control-system/control-system-overview/dimensions#imu-location
         //
         // For example, if +Y in this diagram faces downwards, you would use AxisDirection.NEG_Y.
-         BNO055IMUUtil.remapZAxis(imu, AxisDirection.NEG_X);
 
-
-
+        //TODO: Only Change the Motor Names that are in Quotation Mark "" OR just configure the motor in the Driver Hub with the names already set.
         leftFront = hardwareMap.get(DcMotorEx.class, "LeftFrontDrive");
         leftRear = hardwareMap.get(DcMotorEx.class, "LeftBackDrive");
         rightFront = hardwareMap.get(DcMotorEx.class, "RightFrontDrive");

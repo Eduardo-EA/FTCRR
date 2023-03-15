@@ -47,12 +47,7 @@ Download Tags here ----[Tags](https://drive.google.com/file/d/1cakdgu8sm0rb3wR9s
 
 ## Authors
 
-Eduardo
+Eduardo 
 
-## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-* 0.1
-    * Initial Release
 
