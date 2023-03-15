@@ -195,7 +195,8 @@ public class LeftWithPID extends LinearOpMode
 
 
 
-                .waitSeconds(5)
+                .waitSeconds(3)
+
 
                 .build();
 
