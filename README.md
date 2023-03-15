@@ -36,6 +36,12 @@ Download Tags here ----[Tags](https://drive.google.com/file/d/1cakdgu8sm0rb3wR9s
 ![sdcard](FtcRobotController/src/main/assets/img.png)
 
 
+5) Locate "First" under "sdcard"
+![First](FtcRobotController/src/main/assets/img_1.png)
+
+6) Once you've located the file name "First" drag the libOpenCvAndroid453.so file on top of the "First" file (will be highlighted) to upload
+
+
 ## Authors
 
 Eduardo
