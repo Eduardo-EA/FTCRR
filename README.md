@@ -12,7 +12,7 @@ Quick intro and setting up april tags.
 ***Requires Android Studios***
 Download Android Studios [Click Here](https://developer.android.com/studio)
 
-For a basic understanding in line java use [FTCSIM](https://ftcsim.org/ftcsim/), and transfer your block code to Onbot java to understand what block code looks like in Java.
+For a basic understanding in line java use [FTCSIM](https://ftcsim.org/ftcsim/), and transfer your block code to Onbot java to understand what block code looks like in Java line.
 
 ## Getting Started
 
