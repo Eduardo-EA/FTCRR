@@ -4,14 +4,19 @@ An easy beginner Tutorial for Road Runner.
 
 ## Description
 
-Utilizes RoadRunner trajectories and April tags for the robot’s autonomous phase.
+Quick intro and setting up april tags.
+
+***Read Documentation of RoadRunner to learn how to setup***[RoadRunner Doc](https://learnroadrunner.com)
 
 
 ***Requires Android Studios***
 Download Android Studios [Click Here](https://developer.android.com/studio)
 
+For a basic understanding in line java use [FTCSIM](https://ftcsim.org/ftcsim/), and transfer your block code to Onbot java to understand what block code looks like in Java.
 
 ## Getting Started
+
+
 
 ### Dependencies
 
