@@ -61,6 +61,8 @@ Follow steps in order
 ### SampleMecanumDrive
 *Follow the TODO in the SampleMecanumDrive code*
 
+Once you've finish setting up Drive Constant and SampleMecanumDrive file take a look at the Templates.
+
 
 
 
