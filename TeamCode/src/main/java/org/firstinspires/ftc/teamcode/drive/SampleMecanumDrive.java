@@ -146,7 +146,8 @@ public class SampleMecanumDrive extends MecanumDrive {
 
 
 
-        // TODO: if desired, use setLocalizer() to change the localization method
+        // TODO: if desired, use setLocalizer() to change the localization method (Only if your using dead wheels)
+
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
 
 
